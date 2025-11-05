@@ -1,6 +1,6 @@
 # Get-PptxLargeMedia
 
-PowerShell script to **find large images/media in a PowerPoint (.pptx)**, show **where they’re used**, and help you **trim deck size**. It unpacks the .pptx, analyzes embedded media, maps usage to slides (with **shape names**), also checks **masters/layouts/notes/charts**, and optionally detects **exact duplicates**.
+PowerShell script to **find large images/media in a PowerPoint (.pptx)**, show **where they’re used**, and help you **trim deck size**. It unpacks the .pptx or potx, analyzes embedded media, maps usage to slides (with **shape names**), also checks **masters/layouts/notes/charts**, and optionally detects **exact duplicates**.
 
 ---
 
@@ -150,7 +150,7 @@ SizeKB   Kind   FileName     Slides OtherRefs       ShapeHints                  
 
 ## Troubleshooting
 
-* **“File not found” with brackets**: The script uses `-LiteralPath`, so paths like `[name].pptx` are supported. If you still see it, verify the file exists and the extension is `.pptx`.
+* **“File not found” with brackets**: The script uses `-LiteralPath`, so paths like `[name].pptx` are supported. If you still see it, verify the file exists and the extension is `.pptx` or `.potx`.
 * **No output / Orphaned media**: Some media may be in masters/layouts/notes/charts—check **OtherRefs**. Truly orphaned items are likely removable (work on a copy if removing by hand).
 * **Duplicates don’t appear**: Use `-MinKB 1 -DetectDuplicates` to include everything (instead of `-Top`), and consider piping (see example).
 

@@ -13,7 +13,7 @@ Optionally exports a CSV report and detects duplicate media by file hash.
 By default the temporary folder is removed.
 
 .PARAMETER Path
-Path to a .pptx file. Literal path is supported (e.g., names with [ and ]).
+Path to a .pptx  or .potx file. Literal path is supported (e.g., names with [ and ]).
 
 .PARAMETER Top
 Return the N largest media files (sorted by size). Mutually exclusive with -MinKB.
@@ -55,14 +55,17 @@ param(
     [ValidateNotNullOrEmpty()]
     [ValidateScript({
             if (-not (Test-Path -LiteralPath $_ -PathType Leaf)) {
-                throw "File not found: $_" 
+                throw "File not found: $_"
             }
-            if ([System.IO.Path]::GetExtension($_).ToLowerInvariant() -ne '.pptx') {
-                throw "File must have .pptx extension." 
+            $allowedExt = @('.pptx', '.potx')
+            $ext = [System.IO.Path]::GetExtension($_).ToLowerInvariant()
+            if ($allowedExt -notcontains $ext) {
+                throw "File must have one of: $($allowedExt -join ', ')."
             }
             $true
         })]
     [string]$Path,
+
 
     [Parameter(ParameterSetName = 'Top')]
     [ValidateRange(1, 100000)]
