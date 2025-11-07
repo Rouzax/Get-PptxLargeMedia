@@ -110,14 +110,26 @@ PowerShell script to **find large images/media in a PowerPoint (.pptx)**, show *
   * **DupGroup**: Short hash (first 8 chars) for duplicate grouping (blank if unique).
   * **DupCount**: Number of files in the duplicate group.
 
-**Example**
+**Examples**
 
 ```
-SizeKB   Kind   FileName     Slides OtherRefs       ShapeHints                              Orphaned DupGroup DupCount
-------   ----   --------     ------ ---------       ----------                              -------- -------- --------
-17079.86 Images image59.png  9,10                   9: Picture 21 | 10: Picture 3           False                 1
- 3665.57 Images image3.png          Layout:1                                                  False                 1
- 1894.57 Images image39.emf  1                       1: think-cell data - do not delete      False                 1
+ SizeKB Kind   FileName     Slides OtherRefs             ShapeHints                         Orphaned
+ ------ ----   --------     ------ ---------             ----------                         --------
+3665,57 Images image3.png          Layout:1                                                    False
+2308,59 Images image34.png         Layout:25                                                   False
+1894,57 Images image18.emf         Layout:11 | Layout:12                                       False
+1894,57 Images image7.emf          Layout:4                                                    False
+1894,57 Images image132.emf 1                            1: think-cell data - do not delete    False
+```
+
+```
+ SizeKB Kind   FileName     Slides OtherRefs ShapeHints                 Orphaned
+ ------ ----   --------     ------ --------- ----------                 --------
+1100,09 Images image136.png 55               55: Picture 26                False
+ 971,22 Images image28.png  10               10: Picture 108               False
+ 894,24 Images image104.png 31               31: Picture 26, Picture 30    False
+ 832,53 Images image219.png 103              103: Picture 2                False
+ 711,43 Images image205.jpg 98               98: Picture 7                 False
 ```
 
 ---
